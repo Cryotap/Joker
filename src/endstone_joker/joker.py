@@ -43,6 +43,10 @@ class Joker(Plugin):
 
     def on_command(self, sender: CommandSender, command: Command, args: list[str], cf=cf) -> bool:
         if command.name == "joker":
-            a = asyncio.run(self.get_jokes())
-            sender.send_message(f"{cf.MATERIAL_AMETHYST}" + a)
-            return True
+            player = sender.as_player()
+            if player is not None:
+                a = asyncio.run(self.get_jokes())
+                sender.send_message(f"{cf.MATERIAL_AMETHYST}" + a)
+                return True
+            else:
+                sender.send_error_message(f"{cf.MATERIAL_REDSTONE}" + "You must be a player to run this command")
