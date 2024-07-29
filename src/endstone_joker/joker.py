@@ -17,9 +17,9 @@ class Joker(Plugin):
     def on_disable(self) -> None:
         self.logger.info("Disabled!")
 
-    name = "Joker"
-    version = "0.1.0"
-    api_version = "0.4"
+    prefix = "Joker"
+    version = "0.1.1"
+    api_version = "0.5"
     description = "Python joke plugin for Endstone!"
 
     commands = {
