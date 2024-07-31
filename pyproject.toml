@@ -7,4 +7,4 @@ name = "endstone-joker"
 version = "0.1.1"
 
 [project.entry-points."endstone"]
-motde = "endstone_joker:Joker"
+joker = "endstone_joker:Joker"

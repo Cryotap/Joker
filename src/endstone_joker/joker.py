@@ -1,6 +1,7 @@
 from endstone.plugin import Plugin
 from endstone import ColorFormat
 from endstone.command import *
+from endstone import Player
 import asyncio
 import requests
 
@@ -17,6 +18,7 @@ class Joker(Plugin):
     def on_disable(self) -> None:
         self.logger.info("Disabled!")
 
+    name = "joker"
     prefix = "Joker"
     version = "0.1.1"
     api_version = "0.5"
@@ -43,8 +45,7 @@ class Joker(Plugin):
 
     def on_command(self, sender: CommandSender, command: Command, args: list[str], cf=cf) -> bool:
         if command.name == "joker":
-            player = sender.as_player()
-            if player is not None:
+            if isinstance(sender, Player):
                 a = asyncio.run(self.get_jokes())
                 sender.send_message(f"{cf.MATERIAL_AMETHYST}" + a)
                 return True
